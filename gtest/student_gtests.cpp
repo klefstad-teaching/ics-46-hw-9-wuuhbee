@@ -14,3 +14,7 @@ TEST(Ladder, LoadWords){
   load_words(wordList, "src/words.txt");
   EXPECT_FALSE(wordList.empty());
 }
+
+TEST(Ladder, VerifyLadder) {
+  verify_word_ladder();
+}
