@@ -7,7 +7,7 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
     vector<bool> visited(n, false);
     previous.resize(n, -1);
     
-    priority_queue<pair<int, int>> minHeap;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> minHeap;
     minHeap.push({source, 0});
 
     distances[source] = 0;
@@ -37,7 +37,7 @@ vector<int> extract_shortest_path(const vector<int>& /*distances*/, const vector
     for (int vertex = destination; vertex != -1; vertex = previous[vertex]) {
         shortestPath.push_back(vertex);
     }
-    reverse(shortestPath.begin(), shortestPath.end());
+    // reverse(shortestPath.begin(), shortestPath.end());
     return shortestPath;
 }
 
