@@ -13,10 +13,9 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
     distances[source] = 0;
     
     while (!minHeap.empty()) {
-        int current = minHeap.top().first;
+        int u = minHeap.top().first;
         minHeap.pop();
 
-        int u = current;
         if (visited[u]) continue;
 
         visited[u] = true;
@@ -35,10 +34,17 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
 
 vector<int> extract_shortest_path(const vector<int>& /*distances*/, const vector<int>& previous, int destination) {
     vector<int> shortestPath;
-    for (int vertex = destination; vertex > 0; vertex = previous[vertex]) {
+    for (int vertex = destination; vertex != -1; vertex = previous[vertex]) {
         shortestPath.push_back(vertex);
     }
     reverse(shortestPath.begin(), shortestPath.end());
     return shortestPath;
 }
 
+void print_path(const vector<int>& v, int total) {
+    for (int vertex : v) {
+        cout << vertex << " ";
+    }
+    cout << endl;
+    cout << "Total cost is " << total << endl;
+}
